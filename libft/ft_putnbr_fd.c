@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 23:24:22 by aduenas-          #+#    #+#             */
-/*   Updated: 2023/10/26 23:46:08 by aduenas-         ###   ########.fr       */
+/*   Created: 2023/06/07 20:17:19 by aduenas-          #+#    #+#             */
+/*   Updated: 2023/06/07 20:23:21 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-void  create_window(t_list *program)
+void	ft_putnbr_fd(int n, int fd)
 {
-  program->ptr = mlx_init();
-  program->win = mlx_new_window(program->ptr, 1080, 600, "fract-ol");
-}
-
-int main(int argc, char **argv)
-{
-  t_list program;
-
-  if (argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10)
-		  || argc == 4 && !ft_strncmp(argv[1], "julia", 5))
-  {
-	  create_window(&program);
-	  mlx_loop(program.ptr);
-  }
-  return (0);
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else
+	{
+		if (n < 0)
+		{
+			ft_putchar_fd('-', fd);
+			n = n * -1;
+		}
+		if (n / 10 > 0)
+			ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd((n % 10) + '0', fd);
+	}
 }

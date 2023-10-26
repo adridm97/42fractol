@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/10/26 21:31:28 by aduenas-          #+#    #+#              #
+#    Updated: 2023/10/26 22:58:40 by aduenas-         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 
 CC = gcc
 
@@ -12,18 +24,23 @@ OBJS = ${SRC:.c=.o}
 %.o: %.c
 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
-MLX = -lmlx -framework OpenGL -framework AppKit
+MLX = -Lmlx -lmlx -framework OpenGL -framework AppKit
+
+# en -Lmlx substituir mlx por el path a la carpeta, por ejemplo: libs/minilibs seria -Llibs/minilibs
 
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-	${CC} ${CFLAGS} ${OBJS} ${MLX} -o ${NAME}
+	make -C libft/
+	${CC} ${CFLAGS} ${OBJS} ${MLX} -o ${NAME} libft/libft.a
 
 clean:
+	${MAKE} -C libft/ clean
 	rm -rf ${OBJS}
 
 fclean:
-	rm -rf ${NAME}
+	rm -rf ${NAME} ${OBJS}
+	${MAKE} -C libft/ fclean
 
 re: fclean all
 

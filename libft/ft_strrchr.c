@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 23:24:22 by aduenas-          #+#    #+#             */
-/*   Updated: 2023/10/26 23:46:08 by aduenas-         ###   ########.fr       */
+/*   Created: 2023/05/15 21:46:58 by aduenas-          #+#    #+#             */
+/*   Updated: 2023/05/15 22:03:35 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-void  create_window(t_list *program)
+char	*ft_strrchr(const char *s, int c)
 {
-  program->ptr = mlx_init();
-  program->win = mlx_new_window(program->ptr, 1080, 600, "fract-ol");
-}
+	char			*s_copy;
+	int				i;
+	unsigned char	val;
 
-int main(int argc, char **argv)
-{
-  t_list program;
-
-  if (argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10)
-		  || argc == 4 && !ft_strncmp(argv[1], "julia", 5))
-  {
-	  create_window(&program);
-	  mlx_loop(program.ptr);
-  }
-  return (0);
+	s_copy = (char *) s;
+	i = ft_strlen(s);
+	val = (unsigned char) c;
+	while (i >= 0)
+	{
+		if (s_copy[i] == val)
+			return (&s_copy[i]);
+		i--;
+	}
+	return (0);
 }

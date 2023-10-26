@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+        */
+/*   By: aduenas- <aduenas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 21:31:12 by aduenas-          #+#    #+#             */
-/*   Updated: 2023/10/26 21:31:41 by aduenas-         ###   ########.fr       */
+/*   Created: 2023/05/06 12:51:06 by aduenas-          #+#    #+#             */
+/*   Updated: 2023/05/06 13:10:11 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef FRACTOL_H
+#include "libft.h"
 
-#	define FRACTOL_H
-
-#include "mlx.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-
-#	define WIDTH 600
-#	define HIGHT 600
-
-typedef struct s_list
+void	ft_bzero(void *s, size_t n)
 {
-	void	*ptr;
-	void	*win;
-}	t_list;
+	size_t	i;
 
-# endif
+	i = 0;
+	while (i < n)
+	{
+		((char *)s)[i] = '\0';
+		i++;
+	}
+}

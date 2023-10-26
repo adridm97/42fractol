@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 23:24:22 by aduenas-          #+#    #+#             */
-/*   Updated: 2023/10/26 23:46:08 by aduenas-         ###   ########.fr       */
+/*   Created: 2023/05/20 12:28:21 by aduenas-          #+#    #+#             */
+/*   Updated: 2023/06/12 20:29:28 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-void  create_window(t_list *program)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-  program->ptr = mlx_init();
-  program->win = mlx_new_window(program->ptr, 1080, 600, "fract-ol");
-}
+	char	*ptr;
+	size_t	i;
+	size_t	j;
 
-int main(int argc, char **argv)
-{
-  t_list program;
-
-  if (argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10)
-		  || argc == 4 && !ft_strncmp(argv[1], "julia", 5))
-  {
-	  create_window(&program);
-	  mlx_loop(program.ptr);
-  }
-  return (0);
+	ptr = (char *)malloc(sizeof(*s1) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s1[i])
+	{
+		ptr[j++] = s1[i];
+		i++;
+	}
+	i = 0;
+	while (s2[i])
+	{
+		ptr[j++] = s2[i];
+		i++;
+	}
+	ptr[j] = 0;
+	return (ptr);
 }

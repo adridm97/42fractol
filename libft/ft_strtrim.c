@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 23:24:22 by aduenas-          #+#    #+#             */
-/*   Updated: 2023/10/26 23:46:08 by aduenas-         ###   ########.fr       */
+/*   Created: 2023/05/29 20:13:52 by aduenas-          #+#    #+#             */
+/*   Updated: 2023/06/12 20:37:50 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-void  create_window(t_list *program)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-  program->ptr = mlx_init();
-  program->win = mlx_new_window(program->ptr, 1080, 600, "fract-ol");
-}
+	size_t	end;
+	size_t	start;
 
-int main(int argc, char **argv)
-{
-  t_list program;
-
-  if (argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10)
-		  || argc == 4 && !ft_strncmp(argv[1], "julia", 5))
-  {
-	  create_window(&program);
-	  mlx_loop(program.ptr);
-  }
-  return (0);
+	if (s1 == 0 || set == 0)
+		return (0);
+	start = 0;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	end = ft_strlen(s1);
+	while (end > 0 && ft_strchr(set, s1[end]))
+		end--;
+	return (ft_substr(s1, start, end - start + 1));
 }

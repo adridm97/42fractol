@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+        */
+/*   By: aduenas- <aduenas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 21:31:12 by aduenas-          #+#    #+#             */
-/*   Updated: 2023/10/26 21:31:41 by aduenas-         ###   ########.fr       */
+/*   Created: 2023/05/03 20:46:27 by aduenas-          #+#    #+#             */
+/*   Updated: 2023/05/15 21:43:45 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef FRACTOL_H
-
-#	define FRACTOL_H
-
-#include "mlx.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-
-#	define WIDTH 600
-#	define HIGHT 600
-
-typedef struct s_list
+int	ft_tolower(int c)
 {
-	void	*ptr;
-	void	*win;
-}	t_list;
-
-# endif
+	if (c >= 65 && c <= 90)
+		c = c + 32;
+	return (c);
+}
