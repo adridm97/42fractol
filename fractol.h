@@ -6,7 +6,7 @@
 /*   By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 21:31:12 by aduenas-          #+#    #+#             */
-/*   Updated: 2023/11/08 23:49:15 by aduenas-         ###   ########.fr       */
+/*   Updated: 2024/02/18 20:31:14 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 # define FRACTOL_H
 
-# include "mlx.h"
+# include "./mlx/mlx.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
@@ -23,7 +23,8 @@
 # define MANDELBROT 1
 # define JULIA 2
 # define LENGTH 600
-# define HEIGTH 600
+# define HEIGHT 600
+# define MAX_ITERATION 25
 
 enum {
 	W = 13,
@@ -90,5 +91,19 @@ void	clean_exit(t_data *f);
 void	mlx_setup(t_data *data);
 void	win_generation(t_data *data);
 int		generate_fractal(t_data *data);
-
+int		handle_events(t_data *data);
+int		handle_mouse(int code, int x, int y, t_data *data);
+void	mouse_zoom(t_data *data, double zoom, int x, int y);
+void	command_list(t_data *data);
+void	julia_shift(int x, int y, t_data *f);
+int		create_trgb(int t, int r, int g, int b);
+int		make_color(t_data *data);
+int		get_red(int color_value);
+int		get_green(int color_value);
+int		get_blue(int color_value);
+void	apply_shift(t_data *data);
+void	move(t_data *data, char direction);
+void	my_px_put(t_img *img, int x, int y, int color);
+int		ft_is_little_endian(void);
+void	generate_mandelbrot(t_data *data);
 #endif

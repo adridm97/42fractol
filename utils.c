@@ -6,7 +6,7 @@
 /*   By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 17:39:57 by aduenas-          #+#    #+#             */
-/*   Updated: 2023/11/08 23:50:32 by aduenas-         ###   ########.fr       */
+/*   Updated: 2023/11/10 20:48:55 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,18 @@ void	clean_exit(t_data *f)
 		free(f->color);
 	ft_putstr_fd("Exit", 1);
 	exit(0);
+}
+
+void	mouse_zoom(t_data *data, double zoom, int x, int y)
+{
+	(void)x;
+	(void)y;
+
+	data->center_r = data->min_r - data->max_r;
+	data->center_i = data->max_i - data->min_i;
+	data->max_r = data->max_r + (data->center_r - zoom * data->center_r) / 2;
+	data->min_r = data->max_r + zoom * data->center_r;
+	data->min_i = data->min_i + (data->center_i - zoom * data->center_i) / 2;
+	data->max_i = data->min_i + zoom * data->center_i;
+	return ;
 }

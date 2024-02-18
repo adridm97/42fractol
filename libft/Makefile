@@ -6,13 +6,13 @@
 #    By: aduenas- <aduenas-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 22:21:03 by aduenas-          #+#    #+#              #
-#    Updated: 2023/06/10 16:32:09 by aduenas-         ###   ########.fr        #
+#    Updated: 2024/02/05 20:03:34 by aduenas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
 CFLAGS	= -Wall -Wextra -Werror -I.
-LIB = libft.h
+LIB = libft.h ft_printf.h
 SRC		= 	ft_isalpha.c	\
 			ft_isdigit.c	\
 			ft_isalnum.c	\
@@ -46,7 +46,12 @@ SRC		= 	ft_isalpha.c	\
 			ft_putchar_fd.c	\
 			ft_putstr_fd.c	\
 			ft_putendl_fd.c	\
-			ft_putnbr_fd.c
+			ft_putnbr_fd.c	\
+			ft_printf.c	\
+			ft_print.c 	\
+			ft_print_hex.c \
+			ft_print_ptr.c \
+			ft_print_u.c
 
 OBJ	= $(SRC:%.c=%.o)
 

@@ -6,44 +6,49 @@
 #    By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/26 21:31:28 by aduenas-          #+#    #+#              #
-#    Updated: 2023/11/08 23:48:18 by aduenas-         ###   ########.fr        #
+#    Updated: 2024/02/18 23:21:58 by aduenas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBFT = ./libft/libft.a
-HEADER = fractol.h
-
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-
 NAME = fractol
-SRC = main.c render.c utils.c init.c events.c
+HEADER = fractol.h
+LIBFT = libft/libft.a
+CFLAGS = -Wall -Wextra -Werror
+MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+
+
+SRC = main.c render.c utils.c init.c events.c \
+	  julia.c colors.c fractol_utils.c mandelbrot.c
 
 OBJS = ${SRC:.c=.o}
 
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+%.o: %.c $(LIBFT) Makefile $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-MLX = -Lmlx -lmlx -framework OpenGL -framework AppKit
+# en -Lmlx substituir mlx por el path a la carpeta, \
+	 por ejemplo: libs/minilibs seria -Llibs/minilibs
 
-# en -Lmlx substituir mlx por el path a la carpeta, por ejemplo: libs/minilibs seria -Llibs/minilibs
+all: libft mlx ${NAME} Makefile
 
-all: libft ${NAME}
+mlx: 
+	$(MAKE) -C ./mlx
 
 libft:
 	${MAKE} -C ./libft
 
-${NAME}: ${OBJS} ${LIBFT} ${HEADER}
-	${CC} ${CFLAGS} ${MLX} ${LIBFT} ${OBJS} -o ${NAME} 
+${NAME}: ${OBJS} ${LIBFT} ${HEADER} $(MLX)
+	${CC} ${CFLAGS} ${MLX_FLAGS} ${LIBFT} ${OBJS} -o $@ 
 
 clean:
 	${MAKE} -C ./libft clean
 	rm -rf ${OBJS}
 
-fclean:
-	rm -rf ${NAME} ${OBJS}
+fclean: clean
+	rm -rf ${NAME}
 	${MAKE} -C ./libft fclean
+	${MAKE} -C ./mlx clean
 
 re: fclean all
 
-.PHONY: re clean fclean all libft
+.PHONY: re clean fclean all libft mlx
