@@ -6,7 +6,7 @@
 /*   By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 22:58:53 by aduenas-          #+#    #+#             */
-/*   Updated: 2024/02/18 20:21:12 by aduenas-         ###   ########.fr       */
+/*   Updated: 2024/02/20 19:33:51 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	handle_mouse(int code, int x, int y, t_data *data)
 {
 	(void)x;
 	(void)y;
-
 	if (code == 4)
 		mouse_zoom(data, 0.9, x, y);
 	if (code == 5)
@@ -58,7 +57,8 @@ int	handle_keys(int keycode, t_data *data)
 		data->resolution_shift += 50;
 		if (data->resolution_shift > 200)
 			data->resolution_shift = 0;
-		ft_printf("Max iterations: %d\n", (data->resolution_shift + MAX_ITERATION));
+		ft_printf("Max iterations: %d\n", \
+				(data->resolution_shift + MAX_ITERATION));
 	}
 	return (0);
 }

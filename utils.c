@@ -6,11 +6,12 @@
 /*   By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 17:39:57 by aduenas-          #+#    #+#             */
-/*   Updated: 2023/11/10 20:48:55 by aduenas-         ###   ########.fr       */
+/*   Updated: 2024/02/20 19:23:06 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
 char	*ft_str_tolower(char *str)
 {
 	size_t	i;
@@ -69,7 +70,6 @@ void	mouse_zoom(t_data *data, double zoom, int x, int y)
 {
 	(void)x;
 	(void)y;
-
 	data->center_r = data->min_r - data->max_r;
 	data->center_i = data->max_i - data->min_i;
 	data->max_r = data->max_r + (data->center_r - zoom * data->center_r) / 2;

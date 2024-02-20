@@ -6,7 +6,7 @@
 /*   By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 23:23:28 by aduenas-          #+#    #+#             */
-/*   Updated: 2024/02/18 23:23:34 by aduenas-         ###   ########.fr       */
+/*   Updated: 2024/02/20 19:25:35 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	is_mandelbrot(double cr, double ci, t_data *data)
 		zi = tmp;
 		i++;
 	}
-			data->count = i;
+	data->count = i;
 	return (1);
 }
 
@@ -52,7 +52,8 @@ void	generate_mandelbrot(t_data *data)
 		x = -1;
 		while (++x < LENGTH)
 		{
-			pr = data->min_r + ((double)x * (data->max_r - data->min_r) / LENGTH);
+			pr = data->min_r + ((double)x * \
+					(data->max_r - data->min_r) / LENGTH);
 			if (is_mandelbrot(pr, pi, data) == 0)
 				my_px_put(data->img_data, x, y, make_color(data));
 			else

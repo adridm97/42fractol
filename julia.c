@@ -6,7 +6,7 @@
 /*   By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:27:41 by aduenas-          #+#    #+#             */
-/*   Updated: 2024/02/18 17:26:57 by aduenas-         ###   ########.fr       */
+/*   Updated: 2024/02/20 19:29:32 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	generate_julia(t_data *data)
 {
-  int		x;
+	int		x;
 	int		y;
 	double	pr;
 	double	pi;
@@ -29,7 +29,8 @@ void	generate_julia(t_data *data)
 		x = -1;
 		while (++x < LENGTH)
 		{
-			pr = data->min_r + ((double)x * (data->max_r - data->min_r) / LENGTH);
+			pr = data->min_r + ((double)x * \
+					(data->max_r - data->min_r) / LENGTH);
 			if (is_julia(pr, pi, data) == 0)
 				my_px_put(data->img_data, x, y, make_color(data));
 			else
@@ -57,14 +58,16 @@ int	is_julia(double zr, double zi, t_data	*data)
 		zi = 2 * zr * zi + data->julia_shifty;
 		zr = tmp + data->julia_shiftx;
 	}
-		data->count = i;
+	data->count = i;
 	return (1);
 }
 
 void	julia_shift(int x, int y, t_data *data)
 {
-	data->julia_shiftx = data->min_r + (double)x * (data->max_r - data->min_i) / LENGTH;
-	data->julia_shifty = data->max_i + (double)y * (data->min_i - data->max_i) / HEIGHT;
+	data->julia_shiftx = data->min_r + (double)x * \
+						(data->max_r - data->min_i) / LENGTH;
+	data->julia_shifty = data->max_i + (double)y * \
+						(data->min_i - data->max_i) / HEIGHT;
 	ft_printf("New Julia Parameters: x = %d, y = %d\n", x, y);
 	return ;
 }

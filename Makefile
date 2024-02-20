@@ -6,7 +6,7 @@
 #    By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/26 21:31:28 by aduenas-          #+#    #+#              #
-#    Updated: 2024/02/18 23:21:58 by aduenas-         ###   ########.fr        #
+#    Updated: 2024/02/20 19:59:36 by aduenas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,16 +32,16 @@ OBJS = ${SRC:.c=.o}
 all: libft mlx ${NAME} Makefile
 
 mlx: 
-	$(MAKE) -C ./mlx
+	$(MAKE) -s -C ./mlx
 
 libft:
-	${MAKE} -C ./libft
+	${MAKE} -s -C ./libft
 
 ${NAME}: ${OBJS} ${LIBFT} ${HEADER} $(MLX)
 	${CC} ${CFLAGS} ${MLX_FLAGS} ${LIBFT} ${OBJS} -o $@ 
 
 clean:
-	${MAKE} -C ./libft clean
+	${MAKE} -s -C ./libft clean
 	rm -rf ${OBJS}
 
 fclean: clean

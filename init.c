@@ -6,7 +6,7 @@
 /*   By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 15:46:30 by aduenas-          #+#    #+#             */
-/*   Updated: 2024/02/18 19:54:33 by aduenas-         ###   ########.fr       */
+/*   Updated: 2024/02/20 19:31:39 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	set_minmax(t_data *data)
 t_data	data_init(void)
 {
 	t_data	data;
+
 	data.mlx = NULL;
 	data.win = NULL;
 	data.min_r = 0;
@@ -34,7 +35,7 @@ t_data	data_init(void)
 	data.min_i = 0;
 	data.max_i = 0;
 	data.count = 0;
-	data.color_shift = 1; // 1??
+	data.color_shift = 1;
 	data.resolution_shift = 0;
 	data.set = 0;
 	data.center_i = 0;
@@ -67,8 +68,9 @@ void	mlx_setup(t_data *data)
 		ft_putstr_fd("Error image creation", 1);
 		return ;
 	}
-	data->img_data->addr = mlx_get_data_addr(data->img_data->img, &data->img_data->bpp, \
-			&data->img_data->line_len, &data->img_data->endian);
+	data->img_data->addr = mlx_get_data_addr(data->img_data->img, \
+			&data->img_data->bpp, &data->img_data->line_len, \
+			&data->img_data->endian);
 	return ;
 }
 

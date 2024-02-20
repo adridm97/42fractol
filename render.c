@@ -6,7 +6,7 @@
 /*   By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 16:09:06 by aduenas-          #+#    #+#             */
-/*   Updated: 2024/02/18 18:13:41 by aduenas-         ###   ########.fr       */
+/*   Updated: 2024/02/20 19:24:08 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,11 @@ void	check_fractal(t_data *data, char *argv)
 	return ;
 }
 
-
 //comprueba que hay en data->set y inicializa el fractal correspondiente
 int	generate_fractal(t_data *data)
 {
 	handle_events(data);
-	if(data->set == JULIA)
+	if (data->set == JULIA)
 		generate_julia(data);
 	if (data->set == MANDELBROT)
 		generate_mandelbrot(data);

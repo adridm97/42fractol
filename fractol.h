@@ -6,7 +6,7 @@
 /*   By: aduenas- <aduenas-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 21:31:12 by aduenas-          #+#    #+#             */
-/*   Updated: 2024/02/18 20:31:14 by aduenas-         ###   ########.fr       */
+/*   Updated: 2024/02/20 19:57:35 by aduenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@
 # define JULIA 2
 # define LENGTH 800
 # define HEIGHT 800
-# define MAX_ITERATION 300
+# define MAX_ITERATION 100
 
-enum {
+enum
+{
 	W = 13,
 	A = 0,
 	S = 1,
@@ -106,8 +107,8 @@ void	move(t_data *data, char direction);
 void	my_px_put(t_img *img, int x, int y, int color);
 int		ft_is_little_endian(void);
 void	generate_mandelbrot(t_data *data);
-void  generate_julia(t_data *data);
-void  shift_color(t_data *data);
-int   handle_keys(int keycode, t_data *data);
-int   is_julia(double zr, double zi, t_data *data);
+void	generate_julia(t_data *data);
+void	shift_color(t_data *data);
+int		handle_keys(int keycode, t_data *data);
+int		is_julia(double zr, double zi, t_data *data);
 #endif
