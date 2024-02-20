@@ -34,7 +34,7 @@ t_data	data_init(void)
 	data.min_i = 0;
 	data.max_i = 0;
 	data.count = 0;
-	data.color_shift = 0; // 1??
+	data.color_shift = 1; // 1??
 	data.resolution_shift = 0;
 	data.set = 0;
 	data.center_i = 0;

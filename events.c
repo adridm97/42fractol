@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "./libft/ft_printf.h"
 
 //desde aqui manejamos los eventos del raton
 int	handle_mouse(int code, int x, int y, t_data *data)

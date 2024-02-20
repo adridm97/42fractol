@@ -22,9 +22,9 @@
 
 # define MANDELBROT 1
 # define JULIA 2
-# define LENGTH 600
-# define HEIGHT 600
-# define MAX_ITERATION 25
+# define LENGTH 800
+# define HEIGHT 800
+# define MAX_ITERATION 300
 
 enum {
 	W = 13,
@@ -106,4 +106,8 @@ void	move(t_data *data, char direction);
 void	my_px_put(t_img *img, int x, int y, int color);
 int		ft_is_little_endian(void);
 void	generate_mandelbrot(t_data *data);
+void  generate_julia(t_data *data);
+void  shift_color(t_data *data);
+int   handle_keys(int keycode, t_data *data);
+int   is_julia(double zr, double zi, t_data *data);
 #endif

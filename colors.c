@@ -12,6 +12,15 @@
 
 #include "fractol.h"
 
+void	shift_color(t_data *data)
+{
+	data->color_shift += 1;
+	if (data->color_shift > 5)
+		data->color_shift = 1;
+	return ;
+}
+
+//si se desea cambiar los colores, esta es la funcion
 void	apply_shift(t_data *data)
 {
 	if (data->color_shift == 1)
@@ -27,7 +36,7 @@ void	apply_shift(t_data *data)
 	else if (data->color_shift == 3)
 		data->color->g += 75;
 	else if (data->color_shift == 4)
-		f->color->b += 140;
+		data->color->b += 140;
 	else
 	{
 		data->color->b = 75;

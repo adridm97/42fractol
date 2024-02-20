@@ -28,6 +28,6 @@ int main(int argc, char **argv)
 	mlx_setup(&data);
 	command_list(&data);
 	mlx_loop_hook(data.mlx, &generate_fractal, &data);
-	//mlx_loop(data.mlx);
+	mlx_loop(data.mlx);
 	return (0);
 }

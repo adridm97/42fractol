@@ -15,47 +15,49 @@
 
 void	generate_julia(t_data *data)
 {
-	int		x;
+  int		x;
 	int		y;
-	double	r;
-	double	i;
+	double	pr;
+	double	pi;
 
 	if (!data)
 		return ;
-	y = 0;
-	while(++y < HEIGHT)
+	y = -1;
+	while (++y < HEIGHT)
 	{
-		i = data->max_i + ((double)y * (data->min_i - data->max_i) / HEIGHT);
-		x = 0;
-		while(x < LENGTH)
+		pi = data->max_i + ((double)y * (data->min_i - data->max_i) / HEIGHT);
+		x = -1;
+		while (++x < LENGTH)
 		{
-			r = data->min_r + ((double)x * (data->max_r - data->min_r) / LENGTH);
-			if(is_julia(r, i, data) == 0)
-				my_px_put(data->img_data, x, y, make_color(data);
-			x++;
+			pr = data->min_r + ((double)x * (data->max_r - data->min_r) / LENGTH);
+			if (is_julia(pr, pi, data) == 0)
+				my_px_put(data->img_data, x, y, make_color(data));
+			else
+				my_px_put(data->img_data, x, y, create_trgb(0, 0, 0, 0));
 		}
-		y++;
 	}
+	mlx_put_image_to_window(data->mlx, data->win, data->img_data->img, 0, 0);
+	return ;
 }
 
-int	is_julia(double r, double i, t_data *data)
+int	is_julia(double zr, double zi, t_data	*data)
 {
 	double	tmp;
-	int		x;
+	int		i;
 
-	x = 1;
-	while (x < MAX_ITERATION + data->resolution_shift)
+	i = 0;
+	while (i++ < MAX_ITERATION + data->resolution_shift)
 	{
-		if((r * r + i * i) > 4)
+		if ((zr * zr + zi * zi) > 4)
 		{
-			data->count = x;
+			data->count = i;
 			return (0);
 		}
-		tmp = r * r - i * i;
-		i = 2 * r * i + data->julia_shifty;
-		r = tmp + data->julia_shiftx;
+		tmp = zr * zr - zi * zi;
+		zi = 2 * zr * zi + data->julia_shifty;
+		zr = tmp + data->julia_shiftx;
 	}
-	data->count = i;
+		data->count = i;
 	return (1);
 }
 

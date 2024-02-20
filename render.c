@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "./libft/ft_printf.h"
 
 //Chequea los argv y inicializa data->set si el argumento es correcto
 //sino da error y se cierra el programa
